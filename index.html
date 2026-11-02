@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#090c0d" />
+  <title>Asymmetrical Nightmare</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="game-root">
+    <canvas id="world"></canvas>
+    <div class="grain"></div>
+    <div class="vignette"></div>
+
+    <section id="main-menu" class="screen visible">
+      <header class="topbar"><div class="brand-mark">AN</div><div class="profile"><span class="online-dot"></span><span>GUEST_0482</span><b>LV 01</b><div class="currency">◆ <span>1,250</span></div></div></header>
+      <div class="menu-copy">
+        <p class="eyebrow"><i></i> ASYMMETRICAL SURVIVAL HORROR</p>
+        <h1>THE NIGHT<br><em>IS HUNGRY.</em></h1>
+        <p class="intro">Five enter the Hollow. Only the clever make it out.</p>
+        <div class="role-switch"><button class="role active" data-role="survivor"><span class="role-icon">◈</span><span><b>SURVIVOR</b><small>Stay together. Get out.</small></span><i>4</i></button><button class="role" data-role="killer"><span class="role-icon">✣</span><span><b>THE HUNTER</b><small>Find them. End the night.</small></span><i>1</i></button></div>
+        <button id="play-button" class="primary-button"><span>ENTER THE HOLLOW</span><b>→</b></button>
+        <div class="menu-links"><button>LOADOUT</button><button>ARCHIVE</button><button>SETTINGS</button><span>BUILD 0.1.0 · PROTOTYPE</span></div>
+      </div>
+      <div class="menu-character"><div class="character-aura"></div><div class="character-label"><span>FIELD NOTES · 01</span><b id="selected-name">MARA VOSS</b><small>“Keep moving. Don't look back.”</small></div></div>
+      <div class="menu-footer"><span>THE HOLLOW / SECTOR 07</span><span>AN ORIGINAL SURVIVAL HORROR EXPERIENCE</span><span>◉ AUDIO ON</span></div>
+    </section>
+
+    <section id="hud" class="hidden">
+      <div class="hud-top"><div class="objective-card"><span class="objective-icon">⌁</span><div><small id="objective-kicker">RESTORE THE RELAYS</small><b id="objective-text">0 <i>/ 5</i> RELAYS</b></div></div><div class="match-clock"><span>THE HOLLOW</span><b id="clock">00:00</b></div><button id="pause-button" class="icon-button">Ⅱ</button></div>
+      <div id="survivor-hud" class="survivor-hud"><div class="team-card" id="team-list"></div><div class="awareness"><span class="pulse"></span><div><small>THREAT PROXIMITY</small><b id="threat-text">QUIET</b></div><div class="threat-meter"><i id="threat-meter"></i></div></div></div>
+      <div id="killer-hud" class="killer-hud hidden"><div class="hunt-card"><span>☠</span><div><small>HUNT THE REMAINING</small><b id="hunt-count">4 SURVIVORS</b></div></div><div class="power-card"><small>HUNTER'S INSTINCT</small><b>SCENT TRAIL</b><span>Ability ready <kbd>Q</kbd></span></div></div>
+      <div id="center-prompt" class="center-prompt hidden"><span id="prompt-key">E</span><div><b id="prompt-title">REPAIR RELAY</b><small id="prompt-sub">HOLD TO RESTORE</small></div><div class="prompt-progress"><i id="prompt-progress"></i></div></div>
+      <div id="skill-check" class="skill-check hidden"><div class="skill-ring"><div class="skill-zone"></div><div class="skill-needle" id="skill-needle"></div><div class="skill-dot"></div></div><span>STOP IN THE MARK</span><kbd>TAP / SPACE</kbd></div>
+      <div class="crosshair" id="crosshair"></div>
+      <div class="mobile-controls" id="mobile-controls"><div id="joystick" class="joystick"><div class="joystick-knob"></div></div><div class="touch-actions"><button id="touch-sprint">RUN</button><button id="touch-action">ACT</button><button id="touch-ability">POWER</button></div></div>
+      <div id="toast" class="toast"></div>
+      <div id="end-screen" class="end-screen hidden"><div class="end-panel"><small id="end-kicker">THE HOLLOW RELEASES YOU</small><h2 id="end-title">NIGHT<br>ESCAPED</h2><p id="end-copy">The fog remembers every footstep.</p><div class="result-stats"><span>RELAYS <b id="result-relays">0 / 5</b></span><span>TIME <b id="result-time">00:00</b></span><span>RENOWN <b>+420</b></span></div><button id="return-button" class="primary-button"><span>RETURN TO LOBBY</span><b>→</b></button></div></div>
+      <div id="pause-screen" class="pause-screen hidden"><div><small>THE HOLLOW / PAUSED</small><h2>TAKE A<br>BREATH.</h2><p>Controls: WASD move · Shift run · E interact · Space skill check</p><button id="resume-button" class="primary-button"><span>RETURN TO THE NIGHT</span><b>→</b></button><button id="quit-button" class="plain-button">LEAVE MATCH</button></div></div>
+      <div id="interaction-hint" class="interaction-hint">WASD <span>MOVE</span> &nbsp; SHIFT <span>RUN</span> &nbsp; E <span>INTERACT</span> &nbsp; SPACE <span>SKILL CHECK</span></div>
+    </section>
+    <div id="loading" class="loading"><div class="loader-mark">AN</div><span>THE FOG IS GATHERING</span></div>
+  </div>
+  <script type="module" src="game.js"></script>
+</body>
+</html>
